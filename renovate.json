@@ -50,6 +50,12 @@
     {
       "groupName": "i18next",
       "matchPackageNames": ["i18next", "react-i18next"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["node"],
+      "versionCompatibility": "^(?<version>[^-]+)(?<compatibility>-.*)?$",
+      "versioning": "node"
     }
   ],
   "nvm": {
