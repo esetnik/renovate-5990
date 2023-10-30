@@ -1,0 +1,69 @@
+{
+  "extends": [
+    "config:base",
+    ":prHourlyLimitNone",
+    ":maintainLockFilesWeekly",
+    "docker:pinDigests",
+    "regexManagers:dockerfileVersions"
+  ],
+  "packageRules": [
+    {
+      "updateTypes": ["digest"],
+      "schedule": ["before 3am on Monday"]
+    },
+    {
+      "updateTypes": ["minor", "patch", "pin", "lockFileMaintenance"]
+    },
+    {
+      "packageNames": ["aws/aws-sdk-php"],
+      "schedule": ["every weekend"]
+    },
+    {
+      "groupName": "Cypress",
+      "groupSlug": "cypress",
+      "matchPackagePrefixes": ["cypress"]
+    },
+    {
+      "groupName": "react-pdf-viewer",
+      "matchPackagePrefixes": ["@react-pdf-viewer/"]
+    },
+    {
+      "groupName": "stripe-js",
+      "groupSlug": "stripe-js",
+      "matchPackagePrefixes": ["@stripe/"]
+    },
+    {
+      "groupName": "prettier",
+      "groupSlug": "prettier",
+      "matchPackageNames": ["prettier", "eslint-plugin-prettier"]
+    },
+    {
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "react-is",
+        "@types/react",
+        "@types/react-dom"
+      ],
+      "groupName": "react monorepo with types"
+    },
+    {
+      "groupName": "i18next",
+      "matchPackageNames": ["i18next", "react-i18next"]
+    }
+  ],
+  "nvm": {
+    "fileMatch": ["(^|/)\\.nvmrc$"]
+  },
+  "postUpdateOptions": ["yarnDedupeHighest"],
+  "rebaseWhen": "conflicted",
+  "branchConcurrentLimit": 0,
+  "prConcurrentLimit": 0,
+  "hostRules": [
+    {
+      "hostType": "docker",
+      "username": "esetnik",
+      "password": "dckr_pat_Sm5UbjVFjAzL4S-Eu0Hw2uLwsWU"
+    }
+  ]
+}
