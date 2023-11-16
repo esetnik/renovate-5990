@@ -1,4 +1,4 @@
-FROM node:18.18.2-alpine@sha256:e3af3befbf609f62642b2ace78b6e99ef45f5f29018b7c628dc4a5315db42649
+FROM node:20.9.0-alpine@sha256:cb2301e2c5fe3165ba2616591efe53b4b6223849ac0871c138f56d5f7ae8be4b
 
 ARG REACT_APP_ENV=local
 
